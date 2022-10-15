@@ -5,6 +5,7 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const cookieSession = require('cookie-session');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -25,6 +26,12 @@ app.use(
   })
 );
 app.use(express.static('public'));
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['not a key'],
+  maxAge: 24 * 60 * 60 * 1000
+}));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -47,6 +54,18 @@ app.use('/users', usersRoutes);
 app.get('/', (req, res) => {
   res.render('index');
 });
+
+app.post("/login", (req, res) => {
+  req.session.customer_id = 1;
+  res.redirect("/");
+});
+
+app.post("/logout", (req, res) => {
+  res.clearCookie('session');
+  res.clearCookie('session.sig');
+  res.redirect("/");
+});
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
