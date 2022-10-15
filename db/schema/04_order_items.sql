@@ -5,7 +5,6 @@ CREATE TABLE order_items (
   id SERIAL PRIMARY KEY NOT NULL,
   order_id INT,
   item_id INT,
-  total NUMERIC(10,2),
   CONSTRAINT fk_order
     FOREIGN KEY(order_id)
       REFERENCES orders(id),
