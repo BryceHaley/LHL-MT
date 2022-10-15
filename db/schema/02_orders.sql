@@ -6,7 +6,7 @@ CREATE TABLE orders (
   customer_id INT,
   order_time TIMESTAMP,
   order_status VARCHAR(20),
-  CONSTRAINT fk_user
+  CONSTRAINT fk_customers
     FOREIGN KEY(customer_id)
       REFERENCES customers(id)
 );
