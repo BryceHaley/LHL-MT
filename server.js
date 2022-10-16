@@ -27,6 +27,7 @@ app.use(
 );
 app.use(express.static('public'));
 
+//TODO: update to use security if we advance app
 app.use(cookieSession({
   name: 'session',
   keys: ['not a key'],
@@ -40,6 +41,7 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const itemsApiRoutes = require('./routes/items-api');
 const usersRoutes = require('./routes/users');
 const itemsRoutes = require('./routes/items');
+const ordersRoutes = require('./routes/orders');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -49,6 +51,7 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/api/items', itemsApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/items', itemsRoutes);
+app.use('/orders', ordersRoutes);
 
 // Note: mount other resources here, using the same pattern above
 
