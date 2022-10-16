@@ -1,16 +1,16 @@
 /*
- * All routes for Items Data are defined here
- * Since this file is loaded in server.js into api/items,
- *   these routes are mounted onto /api/items
+ * All routes for Orders Data are defined here
+ * Since this file is loaded in server.js into api/orders,
+ *   these routes are mounted onto /api/orders
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
 const express = require('express');
 const router  = express.Router();
-const itemQueries = require('../db/queries/items');
+const orderQueries = require('../db/queries/orders');
 
 router.get('/', (req, res) => {
-  itemQueries.getItems()
+  orderQueries.getOrders()
     .then(items => {
       res.json({ items });
     })

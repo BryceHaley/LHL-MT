@@ -39,6 +39,7 @@ app.use(cookieSession({
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const itemsApiRoutes = require('./routes/items-api');
+const ordersApiRoutes = require('./routes/orders-api');
 const usersRoutes = require('./routes/users');
 const itemsRoutes = require('./routes/items');
 const ordersRoutes = require('./routes/orders');
@@ -49,6 +50,7 @@ const ordersRoutes = require('./routes/orders');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/api/items', itemsApiRoutes);
+app.use('/api/orders', ordersApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/items', itemsRoutes);
 app.use('/orders', ordersRoutes);
