@@ -21,4 +21,24 @@ router.get('/', (req, res) => {
     });
 });
 
+
+//requires req with order_id(INT) and order_status(String)
+//sets the order_status for the order order_id using the code found in queries/order.js
+router.post('/set_status', (req, res) => {
+  const newStatus = req.body.status;
+  const orderId = req.body.id;
+
+  orderQueries.setOrderStatus(newStatus, orderId)
+    .then(items => {
+      res.json({ items });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message,
+        newStatus,
+       orderId});
+    });
+});
+
 module.exports = router;

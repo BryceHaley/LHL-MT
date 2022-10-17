@@ -21,4 +21,13 @@ const getOrders = () => {
     });
 };
 
-module.exports = { getOrders };
+const setOrderStatus = (newStatus, orderId) => {
+  return db.query(`
+  UPDATE orders
+  SET order_status = '${newStatus}'
+  WHERE id = ${orderId};
+  `
+  )
+}
+
+module.exports = { getOrders, setOrderStatus };
