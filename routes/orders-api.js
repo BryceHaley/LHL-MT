@@ -21,4 +21,59 @@ router.get('/', (req, res) => {
     });
 });
 
+
+//requires req with order_id(INT) and order_status(String)
+//sets the order_status for the order order_id using the code found in queries/order.js
+router.post('/set_status', (req, res) => {
+  const newStatus = req.body.status;
+  const orderId = req.body.id;
+
+  orderQueries.setOrderStatus(newStatus, orderId)
+    .then(items => {
+      res.json({ items });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+//requires req with orderId (INT) and delay(INT) in minutes
+//sets the projected time for order completion to delay minutes in the future
+router.post('/update_wait_time', (req, res) => {
+  const minutesToWait = req.body.delay;
+  const orderId = req.body.id;
+
+  orderQueries.updateOrderTimeToComplete(minutesToWait, orderId)
+  .then(items => {
+    res.json({ items });
+  })
+  .catch(err => {
+    res
+    .status(500)
+    .json( {error: err.message })
+  });
+});
+
+//Requires req with items.
+//Items is an object whose keys are id from the items table and values is quantity ordered
+//creates a new order and adds the order items specified
+//function is currently NOT atomic. Failure to load an item will still generate an order
+router.post('/new', (req,res)=> {
+  const customerId = 1; //TODO: grab ID from cookie
+  const items = JSON.parse(req.body.items);
+
+  orderQueries.createNewOrder(customerId)
+  .then(orderRetVal => {
+    res.json(orderRetVal);
+    const orderId = orderRetVal[0].id;
+    for (const itemId in items) {
+      for (let i = 0; i < items[itemId]; i++) {
+        orderQueries.addOrderItem(itemId, orderId);
+      }
+    }
+  });
+});
+
 module.exports = router;
