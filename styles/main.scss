@@ -4,5 +4,63 @@ body {
   align-items: center;
   min-height: 100vh;
 
-  background: rgb(255, 255, 255);
+  background-image: url(/images/home-page.jpg);
+  background-color: #ffffff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
+// MENU CSS
+.menu-sections {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2em;
+    margin-top: 10%;
+    max-width: 50%;
+    margin-bottom: 10%;
+}
+
+.dish-content {
+    display: flex;
+    background-color: rgba(255, 198, 112, 0.5);
+    width: 100%;
+}
+
+img {
+    max-width: 25%;
+    gap: 1em;
+    height: auto;
+}
+
+.menu-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin-right: 2em;
+    margin-left: 2em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.dish-price {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+.dish-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-button {
+    background-color: transparent;
+    padding: 5px;
+}
+
+.add-button:hover {
+    background-color: rgb(252, 200, 105);
+  }

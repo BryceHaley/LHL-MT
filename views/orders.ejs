@@ -12,12 +12,14 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/nav.css"/>
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/users.js"></script> <%# UPDATE ME %>
 </head>
 
 <body>
+  <%- include('partials/_header') %>
   <h1>Orders</h1>
   <button id="fetch-orders">Fetch Orders via AJAX</button>
   <ul id="orders"></ul>
