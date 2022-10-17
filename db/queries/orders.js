@@ -28,6 +28,17 @@ const setOrderStatus = (newStatus, orderId) => {
   WHERE id = ${orderId};
   `
   )
-}
+};
 
-module.exports = { getOrders, setOrderStatus };
+const updateOrderTimeToComplete = (minutesToComplete, orderId) => {
+  return db.query(`
+    UPDATE orders
+    SET projected_completion = NOW()::timestamp + INTERVAL '${minutesToComplete} minute'
+    WHERE id = ${orderId}
+    `
+  )
+};
+
+
+
+module.exports = { getOrders, setOrderStatus, updateOrderTimeToComplete };

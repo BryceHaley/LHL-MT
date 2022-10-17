@@ -35,10 +35,23 @@ router.post('/set_status', (req, res) => {
     .catch(err => {
       res
         .status(500)
-        .json({ error: err.message,
-        newStatus,
-       orderId});
+        .json({ error: err.message });
     });
+});
+
+router.post('/update_wait_time', (req, res) => {
+  const minutesToWait = req.body.delay;
+  const orderId = req.body.id;
+
+  orderQueries.updateOrderTimeToComplete(minutesToWait, orderId)
+  .then(items => {
+    res.json({ items });
+  })
+  .catch(err => {
+    res
+    .status(500)
+    .json( {error: err.message })
+  });
 });
 
 module.exports = router;
