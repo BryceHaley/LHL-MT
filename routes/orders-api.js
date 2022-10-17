@@ -39,6 +39,8 @@ router.post('/set_status', (req, res) => {
     });
 });
 
+//requires req with orderId (INT) and delay(INT) in minutes
+//sets the projected time for order completion to delay minutes in the future
 router.post('/update_wait_time', (req, res) => {
   const minutesToWait = req.body.delay;
   const orderId = req.body.id;
@@ -51,6 +53,26 @@ router.post('/update_wait_time', (req, res) => {
     res
     .status(500)
     .json( {error: err.message })
+  });
+});
+
+//Requires req with items.
+//Items is an object whose keys are id from the items table and values is quantity ordered
+//creates a new order and adds the order items specified
+//function is currently NOT atomic. Failure to load an item will still generate an order
+router.post('/new', (req,res)=> {
+  const customerId = 1; //TODO: grab ID from cookie
+  const items = JSON.parse(req.body.items);
+
+  orderQueries.createNewOrder(customerId)
+  .then(orderRetVal => {
+    res.json(orderRetVal);
+    const orderId = orderRetVal[0].id;
+    for (const itemId in items) {
+      for (let i = 0; i < items[itemId]; i++) {
+        orderQueries.addOrderItem(itemId, orderId);
+      }
+    }
   });
 });
 

@@ -34,11 +34,40 @@ const updateOrderTimeToComplete = (minutesToComplete, orderId) => {
   return db.query(`
     UPDATE orders
     SET projected_completion = NOW()::timestamp + INTERVAL '${minutesToComplete} minute'
-    WHERE id = ${orderId}
+    WHERE id = ${orderId};
     `
   )
 };
 
+const createNewOrder = (customerId) => {
+  return db.query(`
+    INSERT INTO orders (
+      customer_id,
+      order_time,
+      order_status
+    )
+    VALUES (
+      ${customerId},
+      NOW()::timestamp,
+      'new'
+    )
+    RETURNING id;
+  `)
+   .then(data => {
+    return data.rows
+   });
+};
 
+const addOrderItem = (itemId, orderId) => {
+  return db.query(`
+    INSERT INTO order_items (order_id, item_id) VALUES (${orderId}, ${itemId});
+  `)
+};
 
-module.exports = { getOrders, setOrderStatus, updateOrderTimeToComplete };
+module.exports = {
+  getOrders,
+  setOrderStatus,
+  updateOrderTimeToComplete,
+  createNewOrder,
+  addOrderItem
+};
