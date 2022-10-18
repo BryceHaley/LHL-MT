@@ -1,0 +1,112 @@
+route: /login
+code: server.js
+command: curl -X POST -i localhost:8080/login
+result:
+HTTP/1.1 302 Found
+X-Powered-By: Express
+Location: /
+Vary: Accept
+Content-Type: text/plain; charset=utf-8
+Content-Length: 23
+Set-Cookie: session=eyJjdXN0b21lcl9pZCI6MX0=; path=/; expires=Wed, 19 Oct 2022 00:51:50 GMT; httponly
+Set-Cookie: session.sig=9cg-lxY5JM6PNOWCVTsr1d-EJ_8; path=/; expires=Wed, 19 Oct 2022 00:51:50 GMT; httponly
+Date: Tue, 18 Oct 2022 00:51:50 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Found. Redirecting to /⏎
+
+route: /logout
+code: server.js
+command: curl -X POST -i localhost:8080/logout
+result:
+HTTP/1.1 302 Found
+X-Powered-By: Express
+Set-Cookie: session=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT
+Set-Cookie: session.sig=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT
+Location: /
+Vary: Accept
+Content-Type: text/plain; charset=utf-8
+Content-Length: 23
+Date: Tue, 18 Oct 2022 00:53:31 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Found. Redirecting to /⏎
+
+route: /api/items
+code: /routes/items-api.js
+command: curl -X GET -i localhost:8080/api/items
+result:
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 223
+ETag: W/"df-ZgbswoB+ZaSJWau5xedvbfvgqZU"
+Date: Tue, 18 Oct 2022 00:56:36 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"items":[{"id":1,"name":"coke","description":"warm and flat","price":"1.25"},{"id":2,"name":"cake","description":"cold and soggy","price":"420.69"},{"id":3,"name":"koala","description":"perfectly roasted","price":"5.00"}]}⏎
+
+route: /api/orders
+code: /routes/orders-api.js
+command: curl -X GET -i localhost:8080/api/orders
+result:
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 629
+ETag: W/"275-+KjwKUn5MD0AMaotvGih9HI1Ayo"
+Date: Tue, 18 Oct 2022 01:00:13 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"items":[{"order_id":3,"customer_email":"2@mail.com","customer_number":"222-222-2222","order_time":"2022-10-18T01:00:07.249Z","order_status":"completed","projected_completion":"2022-10-18T01:00:07.249Z","total_cost":null},{"order_id":2,"customer_email":"1@mail.com","customer_number":"111-111-1111","order_time":"2022-10-18T01:00:07.249Z","order_status":"cancelled","projected_completion":null,"total_cost":"5.00"},{"order_id":1,"customer_email":"1@mail.com","customer_number":"111-111-1111","order_time":"2022-10-18T01:00:07.249Z","order_status":"placed","projected_completion":"2022-10-18T02:00:07.249Z","total_cost":"6.25"}]}⏎
+
+route: /api/orders/set_status
+code: /routes/orders-api.js
+command: curl -X POST -i localhost:8080/api/orders/set_status -d "status=cancelled&id=1
+twilio: will send text message to user when status is changed to 'ready'
+result:
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 1026
+ETag: W/"402-XU5yEPMlhd1DXorpit1U8UK7BH0"
+Date: Tue, 18 Oct 2022 01:04:47 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"items":{"command":"UPDATE","rowCount":1,"oid":null,"rows":[],"fields":[],"_types":{"_types":{"arrayParser":{},"builtins":{"BOOL":16,"BYTEA":17,"CHAR":18,"INT8":20,"INT2":21,"INT4":23,"REGPROC":24,"TEXT":25,"OID":26,"TID":27,"XID":28,"CID":29,"JSON":114,"XML":142,"PG_NODE_TREE":194,"SMGR":210,"PATH":602,"POLYGON":604,"CIDR":650,"FLOAT4":700,"FLOAT8":701,"ABSTIME":702,"RELTIME":703,"TINTERVAL":704,"CIRCLE":718,"MACADDR8":774,"MONEY":790,"MACADDR":829,"INET":869,"ACLITEM":1033,"BPCHAR":1042,"VARCHAR":1043,"DATE":1082,"TIME":1083,"TIMESTAMP":1114,"TIMESTAMPTZ":1184,"INTERVAL":1186,"TIMETZ":1266,"BIT":1560,"VARBIT":1562,"NUMERIC":1700,"REFCURSOR":1790,"REGPROCEDURE":2202,"REGOPER":2203,"REGOPERATOR":2204,"REGCLASS":2205,"REGTYPE":2206,"UUID":2950,"TXID_SNAPSHOT":2970,"PG_LSN":3220,"PG_NDISTINCT":3361,"PG_DEPENDENCIES":3402,"TSVECTOR":3614,"TSQUERY":3615,"GTSVECTOR":3642,"REGCONFIG":3734,"REGDICTIONARY":3769,"JSONB":3802,"REGNAMESPACE":4089,"REGROLE":4096}},"text":{},"binary":{}},"RowCtor":null,"rowAsArray":false}}⏎
+
+route: /api/orders/update_wait_time
+code: /routes/orders-api.js
+command: curl -X POST -i localhost:8080/api/orders/update_wait_time -d "delay=60&id=1"
+twilio: will send text message whenever this is updated
+result:
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 1026
+ETag: W/"402-XU5yEPMlhd1DXorpit1U8UK7BH0"
+Date: Tue, 18 Oct 2022 01:08:00 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"items":{"command":"UPDATE","rowCount":1,"oid":null,"rows":[],"fields":[],"_types":{"_types":{"arrayParser":{},"builtins":{"BOOL":16,"BYTEA":17,"CHAR":18,"INT8":20,"INT2":21,"INT4":23,"REGPROC":24,"TEXT":25,"OID":26,"TID":27,"XID":28,"CID":29,"JSON":114,"XML":142,"PG_NODE_TREE":194,"SMGR":210,"PATH":602,"POLYGON":604,"CIDR":650,"FLOAT4":700,"FLOAT8":701,"ABSTIME":702,"RELTIME":703,"TINTERVAL":704,"CIRCLE":718,"MACADDR8":774,"MONEY":790,"MACADDR":829,"INET":869,"ACLITEM":1033,"BPCHAR":1042,"VARCHAR":1043,"DATE":1082,"TIME":1083,"TIMESTAMP":1114,"TIMESTAMPTZ":1184,"INTERVAL":1186,"TIMETZ":1266,"BIT":1560,"VARBIT":1562,"NUMERIC":1700,"REFCURSOR":1790,"REGPROCEDURE":2202,"REGOPER":2203,"REGOPERATOR":2204,"REGCLASS":2205,"REGTYPE":2206,"UUID":2950,"TXID_SNAPSHOT":2970,"PG_LSN":3220,"PG_NDISTINCT":3361,"PG_DEPENDENCIES":3402,"TSVECTOR":3614,"TSQUERY":3615,"GTSVECTOR":3642,"REGCONFIG":3734,"REGDICTIONARY":3769,"JSONB":3802,"REGNAMESPACE":4089,"REGROLE":4096}},"text":{},"binary":{}},"RowCtor":null,"rowAsArray":false}}⏎
+
+route: /api/order/new
+code: route/orders-api.js
+command: curl -X POST -i localhost:8080/api/orders/new -d 'items={"1":1,"2":1,"3":1}'
+result:
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 10
+ETag: W/"a-lpg3/8UqE2AuL8NcKxkkAu8JkNc"
+Date: Tue, 18 Oct 2022 01:09:14 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+[{"id":5}]⏎
