@@ -8,19 +8,94 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <meta name="viewport" content="width=device-width, initial-scale=1.0" >
 
+  <!-- External CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- App CSS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/nav.css"/>
 
+  <!-- App JS -->
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/users.js"></script>
 </head>
 
 <body>
-  <h1>ITEMS</h1>
-  <button id="fetch-users">Fetch ITEMS via AJAX</button>
-  <ul id="items"></ul>
+  <%- include('partials/_header') %>
+
+  <div class="menu-sections">
+
+    <div class="dish-content">
+      <img src="/images/cakes.jpg">
+      <div class="menu-column">
+
+      <div class="dish-price">
+        <h2 class="dish-title">Cake</h2>
+        <h2>$100</h2>
+      </div>
+
+      <div class="dish-description">
+        <h3>Dish description goes here</h3>
+      </div>
+
+      <div class="dish-buttons">
+        <button class="add-button"><i class="fa-solid fa-plus">ADD</i></button>
+      </div>
+
+      </div>
+    </div>
+
+    <div class="dish-content">
+      <img src="/images/cola.jpg">
+      <div class="menu-column">
+
+        <div class="dish-price">
+          <h2 class="dish-title">Coke</h2>
+          <h2>$100</h2>
+        </div>
+
+        <div class="dish-description">
+          <h3>Dish description goes here</h3>
+        </div>
+
+        <div class="dish-buttons">
+          <button class="add-button"><i class="fa-solid fa-plus">ADD</i></button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="dish-content">
+      <img src="/images/koala.jpg">
+      <div class="menu-column">
+
+        <div class="dish-price">
+          <h2 class="dish-title">Koala</h2>
+          <h2>$100</h2>
+        </div>
+
+        <div class="dish-description">
+          <h3>Dish description goes here</h3>
+        </div>
+
+        <div class="dish-buttons">
+          <button class="add-button"><i class="fa-solid fa-plus">ADD</i></button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <div>
+    <button id="fetch-users">Fetch ITEMS via AJAX</button>
+    <ul id="items"></ul>
+  </div>
+
 </body>
 
 </html>
