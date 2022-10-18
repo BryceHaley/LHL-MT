@@ -33,6 +33,11 @@ router.post('/set_status', (req, res) => {
     .then(items => {
       res.json({ items });
     })
+    .then(() => {
+      if(newStatus !== 'ready'){
+        sms.sendText(`Your food is ready.`);
+      }
+    })
     .catch(err => {
       res
         .status(500)
