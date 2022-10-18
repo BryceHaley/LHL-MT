@@ -83,4 +83,19 @@ router.post('/new', (req,res)=> {
   });
 });
 
+//requires an order_id (INT)
+//returns detailed item view for the order
+router.get('/:id', (req, res) => {
+  const orderId = req.params.id;
+  orderQueries.getOrderDetails(orderId)
+  .then(items => {
+    res.json({ items });
+  })
+  .catch(err => {
+    res
+    .status(500)
+    .json({ error: err.message });
+  });
+});
+
 module.exports = router;

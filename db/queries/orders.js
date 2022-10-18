@@ -88,7 +88,7 @@ const getOrderDetails = (orderId) => {
         c.phone_number,
         o.order_time,
         o.order_status,
-        o.projecetd_completion,
+        o.projected_completion,
         i.name,
         i.price
       );
