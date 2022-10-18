@@ -8,6 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 const orderQueries = require('../db/queries/orders');
+const sms = require('../sms');
 
 router.get('/', (req, res) => {
   orderQueries.getOrders()
@@ -49,6 +50,7 @@ router.post('/update_wait_time', (req, res) => {
   .then(items => {
     res.json({ items });
   })
+  .then(sms.sendText(`Your food will be ready in ${minutesToWait} minutes!`))
   .catch(err => {
     res
     .status(500)
