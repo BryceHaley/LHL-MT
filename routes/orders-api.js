@@ -8,6 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 const orderQueries = require('../db/queries/orders');
+const sms = require('../sms');
 
 router.get('/', (req, res) => {
   orderQueries.getOrders()
@@ -32,6 +33,11 @@ router.post('/set_status', (req, res) => {
     .then(items => {
       res.json({ items });
     })
+    .then(() => {
+      if(newStatus !== 'ready'){
+        sms.sendText(`Your food is ready.`);
+      }
+    })
     .catch(err => {
       res
         .status(500)
@@ -49,6 +55,7 @@ router.post('/update_wait_time', (req, res) => {
   .then(items => {
     res.json({ items });
   })
+  .then(sms.sendText(`Your food will be ready in ${minutesToWait} minutes!`))
   .catch(err => {
     res
     .status(500)
@@ -73,6 +80,21 @@ router.post('/new', (req,res)=> {
         orderQueries.addOrderItem(itemId, orderId);
       }
     }
+  });
+});
+
+//requires an order_id (INT)
+//returns detailed item view for the order
+router.get('/:id', (req, res) => {
+  const orderId = req.params.id;
+  orderQueries.getOrderDetails(orderId)
+  .then(items => {
+    res.json({ items });
+  })
+  .catch(err => {
+    res
+    .status(500)
+    .json({ error: err.message });
   });
 });
 
