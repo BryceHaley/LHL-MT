@@ -110,3 +110,18 @@ Connection: keep-alive
 Keep-Alive: timeout=5
 
 [{"id":5}]⏎
+
+route: /api/order/:id
+code: route/order-api.js
+command: curl -X GET -i localhost:8080/api/orders/1
+result:
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 578
+ETag: W/"242-BRopF2mVgMmjXInsertOlixe/fs"
+Date: Wed, 19 Oct 2022 00:28:14 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"items":[{"order_id":1,"customer_email":"1@mail.com","customer_number":"111-111-1111","order_time":"2022-10-18T01:00:07.249Z","order_status":"readyed","order_projected_completion_time":"2022-10-18T15:57:23.341Z","item_name":"coke","item_price":"1.25","item_quantity":"1","total_cost":"1.25"},{"order_id":1,"customer_email":"1@mail.com","customer_number":"111-111-1111","order_time":"2022-10-18T01:00:07.249Z","order_status":"readyed","order_projected_completion_time":"2022-10-18T15:57:23.341Z","item_name":"koala","item_price":"5.00","item_quantity":"1","total_cost":"5.00"}]}⏎
