@@ -11,7 +11,7 @@ body {
   background-size: cover;
 }
 
-// MENU CSS
+// MENU
 .menu-sections {
     display: flex;
     flex-direction: column;
@@ -64,3 +64,15 @@ img {
 .add-button:hover {
     background-color: rgb(252, 200, 105);
   }
+
+//ORDERS
+
+.order-sections {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2em;
+    margin-top: 10%;
+    max-width: 75%;
+    margin-bottom: 10%;
+}
