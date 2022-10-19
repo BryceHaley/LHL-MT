@@ -8,7 +8,7 @@ $(document).ready(() => {
   const loadItems = function() {
     $.ajax({
       method: "GET",
-      url: "/api/items"
+      url: "/api/items",
     })
       .then((data) => {
         renderItems(data.items);
