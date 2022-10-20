@@ -4,8 +4,8 @@ body {
   align-items: center;
   min-height: 100vh;
 
-  background-image: url(/images/home-page.jpg);
-  background-color: #ffffff;
+  // background-image: url(/images/home-page.jpg);
+  background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -13,52 +13,59 @@ body {
 
 // MENU
 .menu-sections {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 2em;
-    margin-top: 10%;
-    max-width: 50%;
-    margin-bottom: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2em;
+  margin-top: 50px;
+  max-width: 50%;
+  margin-bottom: 10%;
 }
 
 .dish-content {
-    display: flex;
-    background-color: rgba(255, 198, 112, 0.5);
-    width: 100%;
+  border: 2px solid rgb(222, 219, 219);
+  display: flex;
+  background-color: white;
+  width: 100%;
 }
 
 img {
-    max-width: 25%;
-    gap: 1em;
-    height: auto;
+  max-width: 25%;
+  gap: 1em;
+  height: auto;
 }
 
 .menu-column {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    margin-right: 2em;
-    margin-left: 2em;
-    margin-bottom: 1em;
-    margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin-right: 2em;
+  margin-left: 2em;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.dish-title {
+  color: red;
 }
 
 .dish-price {
-    display: flex;
-    justify-content: space-between;
-    color: white;
+  display: flex;
+  justify-content: space-between;
+  color: black;
 }
 
 .dish-buttons {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: center;
 }
 
 .add-button {
-    background-color: transparent;
-    padding: 5px;
+  background-color: red;
+  padding: 5px;
+  color: white;
+  border: none;
 }
 
 .add-button:hover {

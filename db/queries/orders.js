@@ -64,10 +64,45 @@ const addOrderItem = (itemId, orderId) => {
   `)
 };
 
+const getOrderDetails = (orderId) => {
+  return db.query(`
+    SELECT
+      o.id AS order_id,
+      c.email AS customer_email,
+      c.phone_number AS customer_number,
+      o.order_time AS order_time,
+      o.order_status AS order_status,
+      o.projected_completion AS order_projected_completion_time,
+      i.name AS item_name,
+      i.price AS item_price,
+      COUNT(*) AS item_quantity,
+      SUM(i.price) AS total_cost
+      FROM orders o
+      JOIN customers c ON c.id = o.customer_id
+      JOIN order_items oi ON oi.order_id = o.id
+      JOIN items i ON i.id = oi.item_id
+      WHERE o.id = ${orderId}
+      GROUP BY (
+        o.id,
+        c.email,
+        c.phone_number,
+        o.order_time,
+        o.order_status,
+        o.projected_completion,
+        i.name,
+        i.price
+      );
+  `)
+  .then(data => {
+    return data.rows
+  })
+};
+
 module.exports = {
   getOrders,
   setOrderStatus,
   updateOrderTimeToComplete,
   createNewOrder,
-  addOrderItem
+  addOrderItem,
+  getOrderDetails
 };

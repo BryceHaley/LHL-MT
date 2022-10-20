@@ -20,81 +20,74 @@
 
   <!-- App JS -->
   <script src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
   <script defer src="/scripts/users.js"></script>
 </head>
 
 <body>
   <%- include('partials/_header') %>
 
+  <h2 class="menu-title">MENU</h2>
+
   <div class="menu-sections">
 
-    <div class="dish-content">
+    <!-- <article class="dish-content">
       <img src="/images/cakes.jpg">
+
       <div class="menu-column">
-
-      <div class="dish-price">
-        <h2 class="dish-title">Cake</h2>
-        <h2>$100</h2>
+        <div class="dish-price">
+          <h2 class="dish-title">Cake</h2>
+          <h2>$100</h2>
+       </div>
+       <div class="dish-description">
+          <h4>Cold and soggy</h4>
+        </div>
+        <div class="dish-buttons">
+          <button class="add-button" type="submit">ADD TO CART</button>
+        </div>
       </div>
+    </article>
 
-      <div class="dish-description">
-        <h3>Dish description goes here</h3>
-      </div>
-
-      <div class="dish-buttons">
-        <button class="add-button"><i class="fa-solid fa-plus">ADD</i></button>
-      </div>
-
-      </div>
-    </div>
-
-    <div class="dish-content">
+    <article class="dish-content">
       <img src="/images/cola.jpg">
-      <div class="menu-column">
 
+      <div class="menu-column">
         <div class="dish-price">
           <h2 class="dish-title">Coke</h2>
           <h2>$100</h2>
         </div>
-
         <div class="dish-description">
-          <h3>Dish description goes here</h3>
+          <h4>Warm and flat</h4>
         </div>
-
         <div class="dish-buttons">
-          <button class="add-button"><i class="fa-solid fa-plus">ADD</i></button>
-        </div>
-
+          <button class="add-button" type="submit">ADD TO CART</button>
+         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="dish-content">
+    <article class="dish-content">
       <img src="/images/koala.jpg">
-      <div class="menu-column">
 
+      <div class="menu-column">
         <div class="dish-price">
           <h2 class="dish-title">Koala</h2>
           <h2>$100</h2>
         </div>
-
         <div class="dish-description">
-          <h3>Dish description goes here</h3>
+          <h4>Perfectly roasted</h4>
         </div>
-
         <div class="dish-buttons">
-          <button class="add-button"><i class="fa-solid fa-plus">ADD</i></button>
+          <button class="add-button" type="submit">ADD TO CART</button>
         </div>
-
       </div>
-    </div>
+    </article> -->
   </div>
 
 
-
-  <div>
+  <!-- <div>
     <button id="fetch-users">Fetch ITEMS via AJAX</button>
     <ul id="items"></ul>
-  </div>
+  </div> -->
 
 </body>
 
