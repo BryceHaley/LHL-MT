@@ -45,17 +45,30 @@ $(() => {
 
   $("form").submit(function(event) {
     event.preventDefault();
-    console.log(`delay: ${$("#delay").val()}`);
-    console.log(`status: ${$("#status").val()}`);
-    console.log(`id: ${$("#orderId").val()}`);
+    //console.log(`delay: ${$("#delay").val()}`);
+    //console.log(`status: ${$("#status").val()}`);
+    //console.log(`id: ${$("#orderId").val()}`);
     const orderId = $("#delay").val();
     const newStatus = $("#status").val();
     const newDelay = $("#delay").val();
 
-    if(orderIds.includes(orderId)) {
-
+    if(orderIds.includes(parseInt(orderId))) {
+      if(newStatus) {
+        const postStatusBody = `status=${newStatus}&id=${orderId}`;
+        $.post('/api/orders/set_status', postStatusBody, function(data, status) {
+          console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+        });
+      }
+      if(newDelay) {
+        const postDelayBody = `delay=${newDelay}&id=${orderId}`;
+        $.post('/api/orders/update_wait_time', postDelayBody, function(data, status) {
+          console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+        });
+      }
     } else {
       alert("Id is not valid!");
+      console.log(typeof orderId);
+      console.log(orderIds)
     }
   });
 });
