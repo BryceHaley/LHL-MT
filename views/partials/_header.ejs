@@ -1,10 +1,52 @@
 <nav>
-  <div><a class="navbar-company" href="/">RESTAURANT</a></div>
-  <ul class="navbar-links">
-    <div class="menu">
-      <li><a href="/users">LOGIN</a></li>
-      <li><a href="/orders">CART</a></li>
+  <div class="navbar-container">
+    <ul class="navbar-brand">
+      <li><a href="/">RESTAURANT</a></li>
+    </ul>
+    <ul class="navbar-links">
+      <li><a href="/orders">ORDERS</a></li>
       <li><a href="/items">MENU</a></li>
-    </div>
-  </ul>
+      <li><a href="#" id="itemcart"><i class="fa-solid fa-cart-shopping"></i></a></li>
+    </ul>
+  </div>
 </nav>
+
+<div class="cart-container">
+  <div class="cart">
+    <div class="cart-header">
+      <div class="shopping-cart-total">
+        <span class="Total">Total:</span>
+        <span class="PRICE">$200.00</span>
+      </div>
+    </div>
+  
+      <div class="cart-items">
+        <div class="cart-item-details">
+          <span class="item-name">Name:</span>
+          <span class="item-price">Price:</span>
+          <span class="item-quantity">Quantity:</span>
+          <div class="button"><a href="#">Remove</a></div>
+        </div>
+      </div>
+
+    <div class="button"><a href="#">Checkout</a></div>
+  </div>
+</div>
+
+<script>
+  hideCart = () => {
+    $(".cart").hide();
+  }
+
+  hideCart();
+
+  (function(){
+    $("#itemcart").on("click", function() {
+      $(".cart").fadeToggle( "fast");
+    });
+    
+  })();
+</script>
+
+
+
