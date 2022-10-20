@@ -1,9 +1,12 @@
 const loadOrders = function() {
-  $.get("/api/orders", (data, status) => {
-    console.log(`data: ${JSON.stringify(data.items)}`);
-    console.log(`status: ${status}`);
-    renderOrders(data.items)
+  let orderIds;
+
+  $.ajax("/api/orders", { method: 'GET', async: false})
+  .done(function(data) {
+    //console.log(`data: ${JSON.stringify(data.items)}`);
+    orderIds = renderOrders(data.items)
   });
+  return orderIds;
 };
 
 const createOrderElement = function(order) {
@@ -27,12 +30,32 @@ const createOrderElement = function(order) {
 };
 
 const renderOrders = function(orders) {
+  const orderIds = [];
   for (const order of orders) {
     const $order = createOrderElement(order);
     $(".order-sections").append($order);
+    orderIds.push(order.order_id);
   }
+  return orderIds;
 };
 
-$(document).ready(() => {
-  loadOrders();
+$(() => {
+  const orderIds = loadOrders();
+  console.log(orderIds);
+
+  $("form").submit(function(event) {
+    event.preventDefault();
+    console.log(`delay: ${$("#delay").val()}`);
+    console.log(`status: ${$("#status").val()}`);
+    console.log(`id: ${$("#orderId").val()}`);
+    const orderId = $("#delay").val();
+    const newStatus = $("#status").val();
+    const newDelay = $("#delay").val();
+
+    if(orderIds.includes(orderId)) {
+
+    } else {
+      alert("Id is not valid!");
+    }
+  });
 });
