@@ -32,7 +32,7 @@ $(document).ready(() => {
       <div class="menu-column">
         <div class="dish-price">
           <h2 class="dish-title">${menuItems.name}</h2>
-          <h2>${menuItems.price}</h2>
+          <h2>$${menuItems.price}</h2>
        </div>
        <div class="dish-description">
           <h4>${menuItems.description}</h4>
@@ -56,4 +56,8 @@ $(document).ready(() => {
   loadItems();
   demoSendOrder();
 
+  const addToCart = document.querySelectorAll("button")
+
+
 })
+
