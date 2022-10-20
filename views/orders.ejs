@@ -20,12 +20,17 @@
 
   <!-- App JS -->
   <script src="/vendor/jquery-3.0.0.js"></script>
+<<<<<<< HEAD
   <script defer src="/scripts/users.js"></script>
+=======
+  <script type="text/javascript" src="/scripts/orders.js"></script>
+>>>>>>> 7977016949c2da2430c14e9bf2a647c6cbf70ff2
 </head>
 
 <body>
   <%- include('partials/_header') %>
 
+<<<<<<< HEAD
   <div class="order-sections">
 
     <div class="dish-content">
@@ -49,6 +54,26 @@
     </div>
 
   </div>
+=======
+  <h2 class="menu-title">ORDERS</h2>
+  <div class="order-sections"></div>
+  <form>
+    <label for="orderId">Order ID</label>
+    <input type="number" id="orderId" name="orderId" min="1"></input>
+    <label for="status">Select Status:</label>
+    <select id="status" name="status">
+      <option value="">No Change</option>
+      <option value="new">New</option>
+      <option value="accepted">Accepted</option>
+      <option value="read">Ready</option>
+      <option value="completed">Completed</option>
+      <option value="cancelled">Cancelled</option>
+    </select>
+    <label for="delay">Minutes Till Ready:</label>
+    <input type="number" id="delay" name="delay" min="1" max="999"></input>
+    <input type="submit">
+  </form>
+>>>>>>> 7977016949c2da2430c14e9bf2a647c6cbf70ff2
 </body>
 
 </html>
