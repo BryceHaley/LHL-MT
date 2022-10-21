@@ -58,7 +58,5 @@ $(document).ready(() => {
   demoSendOrder();
 
   const addToCart = document.querySelectorAll("button")
-
-
 })
 
