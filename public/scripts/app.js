@@ -59,9 +59,5 @@ $(document).ready(() => {
 
   const addToCart = document.querySelectorAll("button")
 
-
-  const addToCart = document.querySelectorAll("button")
-
-
 })
 
