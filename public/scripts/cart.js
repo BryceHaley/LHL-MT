@@ -12,18 +12,17 @@ $(document).ready(() => {
     let item = {item_name: dishTitle, total_price: itemPrice };
     cart.push(item);
     renderCartItems([cart[cart.length-1]]);
-
-  })
-
+    cartTotal(cart);
+  });
 
   const createCartElement = function(item) {
     let $cartItem = $(`
-        <div class="cart-items">
-          <div class="cart-item-details">
-            <span class="item-name">Name:${item.item_name}</span>
-            <span class="item-price">Price:${item.total_price}</span>
-          </div>
-        </div>`);
+      <div class="cart-items">
+        <div class="cart-item-details">
+           <span class="item-name">Name:${item.item_name}</span>
+           <span class="item-price">Price:$${item.total_price}</span>
+        </div>
+      </div>`);
     return $cartItem;
   };
 
@@ -34,5 +33,18 @@ $(document).ready(() => {
       $(".cart").append($item);
     }
   };
+
+  const cartTotal = function(cart) {
+    let total = 0;
+    for (let i = 0; i < cart.length; i++) {
+    total += Number(cart[i].total_price);
+    }
+    $(".PRICE").text(total);
+  };
+
+  $('.button').on('click', function(e) {
+    e.preventDefault();
+
+  })
 
 })
