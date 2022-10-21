@@ -1,5 +1,3 @@
-// const addcart = document.querySelectorAll('add-button')
-
 let cart = [];
 
 $(document).ready(() => {
@@ -50,16 +48,3 @@ $(document).ready(() => {
   })
 
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
