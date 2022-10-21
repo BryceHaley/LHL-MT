@@ -27,24 +27,27 @@
 
 <body>
   <%- include('partials/_header') %>
-  <h2 class="menu-title">ORDERS</h2>
-  <div class="order-sections"></div>
-  <form>
-    <label for="orderId">Order ID</label>
-    <input type="number" id="orderId" name="orderId" min="1"></input>
-    <label for="status">Select Status:</label>
-    <select id="status" name="status">
-      <option value="">No Change</option>
-      <option value="new">New</option>
-      <option value="accepted">Accepted</option>
-      <option value="read">Ready</option>
-      <option value="completed">Completed</option>
-      <option value="cancelled">Cancelled</option>
-    </select>
-    <label for="delay">Minutes Till Ready:</label>
-    <input type="number" id="delay" name="delay" min="1" max="999"></input>
-    <input type="submit">
-  </form>
+
+  
+  <div class="order-sections">
+    <h2 class="menu-title">ORDERS</h2>
+    <form>
+      <label for="orderId">Order ID</label>
+      <input type="number" id="orderId" name="orderId" min="1"></input>
+      <label for="status">Select Status:</label>
+      <select id="status" name="status">
+        <option value="">No Change</option>
+        <option value="new">New</option>
+        <option value="accepted">Accepted</option>
+        <option value="ready">Ready</option>
+        <option value="completed">Completed</option>
+        <option value="cancelled">Cancelled</option>
+      </select>
+      <label for="delay">Minutes Till Ready:</label>
+      <input type="number" id="delay" name="delay" min="1" max="999"></input>
+      <input type="submit">
+    </form>
+  </div>
 </body>
 
 </html>

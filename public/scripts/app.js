@@ -54,8 +54,10 @@ $(document).ready(() => {
     }
   }
 
-  loadItems();
+  loadItems()
+
   demoSendOrder();
+
 
   const addToCart = document.querySelectorAll("button")
 })
