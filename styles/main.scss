@@ -25,7 +25,7 @@ body {
 .dish-content {
   border: 2px solid rgb(222, 219, 219);
   display: flex;
-  background-color: white;
+  background-color: bisque;
   width: 100%;
 }
 
@@ -73,13 +73,16 @@ img {
   }
 
 //ORDERS
-
 .order-sections {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 2em;
     margin-top: 10%;
-    max-width: 75%;
+    max-width: 100%;
     margin-bottom: 10%;
+    background-color: bisque;
+}
+
+.order-content {
+  display: flex;
 }

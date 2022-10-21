@@ -1,16 +1,28 @@
-const cart = []
-const item = {id, itemName, price, quantity}
+// const cart = [{id:1, itemName:"Cake", price:3, quantity:4},{id:2, itemName:"Fries", price:3, quantity:2}]
+// const item = {id, itemName, price, quantity}
 
-$(".add-button").on('click', function () {
-    cart.push(item)
+$(document).ready( () => {
+  $(".add-button").on("click", function () {
+      // cart.push(item)
+      console.log("item added")
+  })
 })
 
+
 $(".checkout-button").on('click', function () {
-    let itemObj = JSON.parse(cart)
-    
+  let itemObj = {}
+  for (const key of cart) {
+    console.log(key.quantity, key.id)
+  }
+   //we have a cart with a bunch of objects (items) access items to create JSON
+   //we want to grab the id and quantity of the items selects the keys of the object
     //send to database
 })
 
+
+createCartElement = function(cart) {
+  let 
+}
 {/* <div class="cart-container">
   <div class="cart">
     <div class="cart-header">
@@ -43,7 +55,7 @@ $(".checkout-button").on('click', function () {
 //create an object or an array with the cart item
 //when clicking add to cart button, add the data of item to array
 //when user clicks checkout -> change cart items to JSON and send to database
-
+//in order for us to produce the JSON the JSON will take 2 values, key = id of product, and key value = the quantity of the product.
 // getting the cart to produce a JSON like this: {"1":1,"2":1,"3":1}'
 // if we get that, we know our POST commands will work
 // once you get the JSON, test it in curl with something like: 
