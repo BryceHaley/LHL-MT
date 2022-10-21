@@ -1,73 +1,41 @@
 // const addcart = document.querySelectorAll('add-button')
 
 let cart = [];
-let item = {order_id, item_name, total_price, item_quantity};
-
 
 $(document).ready(() => {
 
-//Event listener to add items to cart
-  $(".add-button").on('click', function () {
+
+  $(".menu-sections").on('click', ".add-button", function(e) {
+    e.preventDefault();
+    const menuColumn = $(this).parent().parent();
+    const dishPrice = menuColumn.children(".dish-price");
+    const dishTitle = dishPrice.children(".dish-title").text();
+    const itemPrice = dishPrice.children(".item-price").text();
+    let item = {item_name: dishTitle, total_price: itemPrice };
     cart.push(item);
-    $.ajax({
-      method: "POST",
-      url: "/api/orders/new",
-      data: item,
-    }).then(() => {
-      $.ajax({
-        method:"GET",
-        url: "/api/orders/:id",
-      })
-        .then((data) => {
-          renderCartItems(data.items);
-        })
-    })
-  });
+    renderCartItems([cart[cart.length-1]]);
 
-
-  // const loadCartItems = function() {
-  //   $.ajax({
-  //     method: "GET",
-  //     url: "/api/orders/:id",
-  //   })
-  //     .then((data) => {
-  //       renderCartItems(data.items);
-  //     })
-  // }
+  })
 
 
   const createCartElement = function(item) {
     let $cartItem = $(`
-      <div class="cart">
-        <div class="cart-header">
-          <div class="shopping-cart-total">
-            <span class="Total">Total:</span>
-            <span class="PRICE">$200.00</span>
+        <div class="cart-items">
+          <div class="cart-item-details">
+            <span class="item-name">Name:${item.item_name}</span>
+            <span class="item-price">Price:${item.total_price}</span>
           </div>
-        </div>
-
-          <div class="cart-items">
-            <div class="cart-item-details">
-              <span class="item-name">Name:${item.itemName}</span>
-              <span class="item-price">Price:${item.price}</span>
-              <span class="item-quantity">Quantity:${item.quantity}</span>
-              <div class="button"><a href="#">Remove</a></div>
-            </div>
-          </div>
-
-        <div class="button"><a href="#">Checkout</a></div>
-      </div>`);
+        </div>`);
     return $cartItem;
   };
 
 
   const renderCartItems = function(cart) {
     for (const item of cart) {
-      const $item = createCartElement($item);
-      $(".cart-container").prepend($item);
+      const $item = createCartElement(item);
+      $(".cart").append($item);
     }
   };
-
 
 })
 
@@ -82,24 +50,4 @@ $(document).ready(() => {
 
 
 
-{/* <div class="cart-container">
-  <div class="cart">
-    <div class="cart-header">
-      <div class="shopping-cart-total">
-        <span class="Total">Total:</span>
-        <span class="PRICE">$200.00</span>
-      </div>
-    </div>
 
-      <div class="cart-items">
-        <div class="cart-item-details">
-          <span class="item-name">Name:</span>
-          <span class="item-price">Price:</span>
-          <span class="item-quantity">Quantity:</span>
-          <div class="button"><a href="#">Remove</a></div>
-        </div>
-      </div>
-
-    <div class="button"><a href="#">Checkout</a></div>
-  </div>
-</div> */}
