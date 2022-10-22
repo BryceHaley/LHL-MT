@@ -57,8 +57,12 @@ $(document).ready(() => {
   loadItems();
   // demoSendOrder();
 
+<<<<<<< HEAD
   // const addToCart = document.querySelectorAll("button")
 
 
+=======
+  const addToCart = document.querySelectorAll("button")
+>>>>>>> c6c985633bb823d25c2ef2885923ea6d92d8505b
 })
 
