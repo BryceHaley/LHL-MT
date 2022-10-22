@@ -27,7 +27,7 @@ $(document).ready(() => {
   const createItemElement = function(menuItems) {
     let $itemContainer = $(`
     <article class="dish-content">
-      <img src="/images/cakes.jpg">
+      <img src=${menuItems.img_url}>
 
       <div class="menu-column">
         <div class="dish-price">
