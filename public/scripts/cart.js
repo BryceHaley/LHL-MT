@@ -19,8 +19,8 @@ $(document).ready(() => {
     let $cartItem = $(`
       <div class="cart-items">
         <div class="cart-item-details">
-           <span class="item-name">Name:${item.item_name}</span>
-           <span class="item-price">Price:$${item.total_price}</span>
+           <span class="item-name">Name: ${item.item_name}</span>
+           <span class="item-price">Price: $${item.total_price}</span>
         </div>
       </div>`);
     return $cartItem;
@@ -54,9 +54,11 @@ $(document).ready(() => {
     for (let i = 0; i < cart.length; i++) {
     total += Number(cart[i].total_price);
     }
-    const shopperCartTotal = $(this);
-    const cartTotal = shopperCartTotal.children(".PRICE")
-    let order = {total_cost: cartTotal};
+
+    //const shopperCartTotal = $(this);
+    //const cartTotal = shopperCartTotal.children(".PRICE")
+    //let order = {total_cost: cartTotal};
+
 
     $.ajax({
           method: 'POST',
@@ -70,7 +72,7 @@ $(document).ready(() => {
         })
     });
     //checkout button to orders
-    //use jquery to insert those values 
+    //use jquery to insert those values
     //key value pair object to send post request
     //post ajax call to a route
 })
