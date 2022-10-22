@@ -19,7 +19,7 @@ $(document).ready(() => {
     let $cartItem = $(`
       <div class="cart-items">
         <div class="cart-item-details">
-           <span class="item-name">Name: ${item.item_name}</span>
+           <span class="item-name"><strong>${item.item_name}</strong></span>
            <span class="item-price">Price: $${item.total_price}</span>
         </div>
       </div>`);
@@ -70,6 +70,7 @@ $(document).ready(() => {
             alert('Error');
           }
         })
+      alert("Your order has been received!");
     });
     //checkout button to orders
     //use jquery to insert those values
