@@ -54,9 +54,9 @@ $(document).ready(() => {
     for (let i = 0; i < cart.length; i++) {
     total += Number(cart[i].total_price);
     }
-    const shopperCartTotal = $(this);
-    const cartTotal = shopperCartTotal.children(".PRICE")
-    let order = {total_cost: cartTotal};
+    // const shopperCartTotal = $(this);
+    // const cartTotal = shopperCartTotal.children(".PRICE")
+    // let order = {total_cost: cartTotal};
 
     $.ajax({
           method: 'POST',
@@ -70,7 +70,7 @@ $(document).ready(() => {
         })
     });
     //checkout button to orders
-    //use jquery to insert those values 
+    //use jquery to insert those values
     //key value pair object to send post request
     //post ajax call to a route
 })
