@@ -7,6 +7,8 @@ CREATE TABLE orders (
   order_time TIMESTAMP,
   order_status VARCHAR(20),
   projected_completion TIMESTAMP,
+  total_cost INT,
+
   CONSTRAINT fk_customers
     FOREIGN KEY(customer_id)
       REFERENCES customers(id)

@@ -1,8 +1,10 @@
 const loadOrders = function() {
   let orderIds;
+  console.log("TEST")
 
   $.ajax("/api/orders", { method: 'GET', async: false})
   .done(function(data) {
+    console.log("DATA", data)
     //console.log(`data: ${JSON.stringify(data.items)}`);
     orderIds = renderOrders(data.items)
   });
@@ -19,7 +21,7 @@ const createOrderElement = function(order) {
      </div>
      <div class="dish-description">
         <h4>${order.total_cost}</h4>
-        <h4>${order.status}</h4>
+
         <h4>${order.order_time}</h4>
         <h4>${order.projected_completion}</h4>
       </div>
@@ -32,8 +34,9 @@ const createOrderElement = function(order) {
 const renderOrders = function(orders) {
   const orderIds = [];
   for (const order of orders) {
+    console.log("ORDERS", order)
     const $order = createOrderElement(order);
-    $(".order-sections").append($order);
+    $(".order-details").append($order);
     orderIds.push(order.order_id);
   }
   return orderIds;
@@ -48,9 +51,10 @@ $(() => {
     //console.log(`delay: ${$("#delay").val()}`);
     //console.log(`status: ${$("#status").val()}`);
     //console.log(`id: ${$("#orderId").val()}`);
-    const orderId = $("#delay").val();
+    const orderId = $("#orderId").val();
     const newStatus = $("#status").val();
     const newDelay = $("#delay").val();
+    console.log(orderId, newStatus, newDelay)
 
     if(orderIds.includes(parseInt(orderId))) {
       if(newStatus) {
@@ -65,6 +69,8 @@ $(() => {
           console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
         });
       }
+      $(".order-details").empty();
+      loadOrders();
     } else {
       alert("Id is not valid!");
       console.log(typeof orderId);
