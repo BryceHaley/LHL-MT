@@ -21,7 +21,6 @@ const createOrderElement = function(order) {
      </div>
      <div class="dish-description">
         <h4>${order.total_cost}</h4>
-
         <h4>${order.order_time}</h4>
         <h4>${order.projected_completion}</h4>
       </div>

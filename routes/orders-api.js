@@ -81,7 +81,8 @@ router.post('/new', (req,res)=> {
     //   }
     // }
     res.json(orderRetVal);
-  });
+  })
+  .then(sms.sendText(`New Order Rec'd`))
 });
 
 //requires an order_id (INT)
