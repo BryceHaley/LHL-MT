@@ -37,12 +37,14 @@ body {
   display: flex;
   background-color: white;
   width: 100%;
+  border-radius: 8px;
 }
 
 img {
   max-width: 25%;
   gap: 1em;
   height: auto;
+  border-radius: 8px 0px 0px 8px;
 }
 
 .menu-column {
@@ -77,6 +79,7 @@ img {
   color: rgb(0, 0, 0);
   opacity: 0.6;
   border: none;
+  border-radius: 8px;
 }
 
 .add-button:hover {
@@ -85,8 +88,9 @@ img {
 
 //////////////////////////////////////// ORDERS
 .order-sections {
-    width: 50%;
+    width: 60%;
     background-color: white;
+    border-radius: 8px;
 }
 
 .order-sections form {

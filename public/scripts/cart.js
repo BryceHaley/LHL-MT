@@ -54,9 +54,6 @@ $(document).ready(() => {
     for (let i = 0; i < cart.length; i++) {
     total += Number(cart[i].total_price);
     }
-    const shopperCartTotal = $(this);
-    const cartTotal = shopperCartTotal.children(".PRICE")
-    let order = {total_cost: cartTotal};
 
     $.ajax({
           method: 'POST',
