@@ -2,12 +2,12 @@
 
 
 //Create individual items
-const demoSendOrder = function() {
-  const demoOrder = 'items={"1":1,"3":6}';
-  $.post("/api/orders/new", demoOrder, function(data, status) {
-    console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
-  });
-};
+// const demoSendOrder = function() {
+//   const demoOrder = 'items={"1":1,"3":6}';
+//   $.post("/api/orders/new", demoOrder, function(data, status) {
+//     console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+//   });
+// };
 
 
 $(document).ready(() => {
@@ -56,7 +56,7 @@ $(document).ready(() => {
 
   loadItems()
 
-  demoSendOrder();
+  // demoSendOrder();
 
 
   const addToCart = document.querySelectorAll("button")

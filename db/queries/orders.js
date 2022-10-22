@@ -9,7 +9,7 @@ const getOrders = () => {
     o.order_time,
     o.order_status,
     o.projected_completion,
-    SUM(i.price) AS total_cost
+    total_cost
   FROM customers c
   JOIN orders o ON c.id = o.customer_id
   FULL OUTER JOIN order_items oi ON oi.order_id = o.id
@@ -39,23 +39,28 @@ const updateOrderTimeToComplete = (minutesToComplete, orderId) => {
   )
 };
 
-const createNewOrder = (customerId) => {
+const createNewOrder = (customerId, totalPrice) => {
   return db.query(`
     INSERT INTO orders (
       customer_id,
       order_time,
-      order_status
+      order_status,
+      total_cost
     )
     VALUES (
       ${customerId},
       NOW()::timestamp,
-      'new'
+      'new',
+      ${totalPrice}
     )
     RETURNING id;
   `)
    .then(data => {
+    console.log("DATA", data)
     return data.rows
-   });
+   }).catch(err => {
+    console.log("ERROR", err)
+   })
 };
 
 const addOrderItem = (itemId, orderId) => {

@@ -42,9 +42,35 @@ $(document).ready(() => {
     $(".PRICE").text(total);
   };
 
+
+
   $('.button').on('click', function(e) {
     e.preventDefault();
-
   })
 
+  $(".cart-container").on('click', ".checkout-button", function(e) {
+    e.preventDefault();
+    let total = 0;
+    for (let i = 0; i < cart.length; i++) {
+    total += Number(cart[i].total_price);
+    }
+    const shopperCartTotal = $(this);
+    const cartTotal = shopperCartTotal.children(".PRICE")
+    let order = {total_cost: cartTotal};
+
+    $.ajax({
+          method: 'POST',
+          url: '/api/orders/new',
+          data: {total_price : total},
+          success: function(result) {
+          },
+          error: function(){
+            alert('Error');
+          }
+        })
+    });
+    //checkout button to orders
+    //use jquery to insert those values 
+    //key value pair object to send post request
+    //post ajax call to a route
 })

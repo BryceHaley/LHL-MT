@@ -69,17 +69,18 @@ router.post('/update_wait_time', (req, res) => {
 //function is currently NOT atomic. Failure to load an item will still generate an order
 router.post('/new', (req,res)=> {
   const customerId = 1; //TODO: grab ID from cookie
-  const items = JSON.parse(req.body.items);
+  const totalPrice = (req.body);
+  console.log("PRICE", totalPrice.total_price)
 
-  orderQueries.createNewOrder(customerId)
+  orderQueries.createNewOrder(customerId, totalPrice.total_price)
   .then(orderRetVal => {
+    // const orderId = orderRetVal[0].id;
+    // for (const itemId in items) {
+    //   for (let i = 0; i < items[itemId]; i++) {
+    //     orderQueries.addOrderItem(itemId, orderId);
+    //   }
+    // }
     res.json(orderRetVal);
-    const orderId = orderRetVal[0].id;
-    for (const itemId in items) {
-      for (let i = 0; i < items[itemId]; i++) {
-        orderQueries.addOrderItem(itemId, orderId);
-      }
-    }
   });
 });
 
