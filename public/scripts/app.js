@@ -2,12 +2,12 @@
 
 
 //Create individual items
-// const demoSendOrder = function() {
-//   const demoOrder = 'items={"1":1,"3":6}';
-//   $.post("/api/orders/new", demoOrder, function(data, status) {
-//     console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
-//   });
-// };
+const demoSendOrder = function() {
+  const demoOrder = 'items={"1":1,"3":6}';
+  $.post("/api/orders/new", demoOrder, function(data, status) {
+    console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+  });
+};
 
 
 $(document).ready(() => {
@@ -54,15 +54,11 @@ $(document).ready(() => {
     }
   }
 
-  loadItems();
-  // demoSendOrder();
+  loadItems()
 
-<<<<<<< HEAD
-  // const addToCart = document.querySelectorAll("button")
+  demoSendOrder();
 
 
-=======
   const addToCart = document.querySelectorAll("button")
->>>>>>> c6c985633bb823d25c2ef2885923ea6d92d8505b
 })
 
