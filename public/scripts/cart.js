@@ -1,4 +1,13 @@
 let cart = [];
+const cartKey = {coke: "1", cake: "2", koala: "3", cookie: "4"};
+
+const makePostBody = function(cart, cartKey) {
+  const postBody = {"1":0, "2":0, "3":0, "4":0};
+  for (const item of cart) {
+    postBody[cartKey[item.item_name]]++;
+  }
+  return postBody;
+}
 
 $(document).ready(() => {
 
@@ -44,7 +53,25 @@ $(document).ready(() => {
 
   $('.button').on('click', function(e) {
     e.preventDefault();
+  });
 
+  $('#checkout').on('click', function(e) {
+    e.preventDefault();
+    const postBody = makePostBody(cart, cartKey);
+    const order = `items=${JSON.stringify(postBody)}`
+    console.log(order);
+    $.post("/api/orders/new", order, function(data, status) {
+      console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+    });
   })
+});
 
-})
+/*
+//Create individual items
+const demoSendOrder = function() {
+  const demoOrder = 'items={"1":1,"3":6}';
+  $.post("/api/orders/new", demoOrder, function(data, status) {
+    console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+  });
+};
+*/

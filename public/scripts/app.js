@@ -56,7 +56,7 @@ $(document).ready(() => {
 
   loadItems()
 
-  demoSendOrder();
+  //demoSendOrder();
 
 
   const addToCart = document.querySelectorAll("button")
