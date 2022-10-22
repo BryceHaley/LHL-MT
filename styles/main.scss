@@ -29,15 +29,13 @@ body {
   flex-direction: column;
   justify-content: space-between;
   gap: 2em;
-  margin-top: 100px;
   max-width: 50%;
-  margin-bottom: 10%;
 }
 
 .dish-content {
-  border: 2px solid rgb(222, 219, 219);
+  border: none;
   display: flex;
-  background-color: bisque;
+  background-color: white;
   width: 100%;
 }
 
@@ -59,7 +57,7 @@ img {
 }
 
 .dish-title {
-  color: red;
+  color: rgb(90, 73, 41);
 }
 
 .dish-price {
@@ -74,27 +72,37 @@ img {
 }
 
 .add-button {
-  background-color: red;
+  background-color: rgb(167, 135, 89);
   padding: 5px;
-  color: white;
+  color: rgb(0, 0, 0);
+  opacity: 0.6;
   border: none;
 }
 
 .add-button:hover {
-    background-color: rgb(252, 200, 105);
+    opacity: 1;
   }
 
 //////////////////////////////////////// ORDERS
 .order-sections {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-top: 10%;
-    max-width: 100%;
-    margin-bottom: 10%;
-    background-color: bisque;
+    width: 50%;
+    background-color: white;
+}
+
+.order-sections form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
 }
 
 .order-content {
   display: flex;
+}
+
+.menu-title {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }

@@ -19,8 +19,8 @@ $(document).ready(() => {
     let $cartItem = $(`
       <div class="cart-items">
         <div class="cart-item-details">
-           <span class="item-name">Name:${item.item_name}</span>
-           <span class="item-price">Price:$${item.total_price}</span>
+           <span class="item-name">Name: ${item.item_name}</span>
+           <span class="item-price">Price: $${item.total_price}</span>
         </div>
       </div>`);
     return $cartItem;
