@@ -1,33 +1,50 @@
-// const addcart = document.querySelectorAll('add-button')
+let cart = [];
+
+$(document).ready(() => {
 
 
-$(".add-button").on('click', function () {
+  $(".menu-sections").on('click', ".add-button", function(e) {
+    e.preventDefault();
+    const menuColumn = $(this).parent().parent();
+    const dishPrice = menuColumn.children(".dish-price");
+    const dishTitle = dishPrice.children(".dish-title").text();
+    const itemPrice = dishPrice.children(".item-price").text();
+    let item = {item_name: dishTitle, total_price: itemPrice };
+    cart.push(item);
+    renderCartItems([cart[cart.length-1]]);
+    cartTotal(cart);
+  });
 
-})
-
-const cart = () => {
-    cart = [];
-    
-}
-
-{/* <div class="cart-container">
-  <div class="cart">
-    <div class="cart-header">
-      <div class="shopping-cart-total">
-        <span class="Total">Total:</span>
-        <span class="PRICE">$200.00</span>
-      </div>
-    </div>
-  
+  const createCartElement = function(item) {
+    let $cartItem = $(`
       <div class="cart-items">
         <div class="cart-item-details">
-          <span class="item-name">Name:</span>
-          <span class="item-price">Price:</span>
-          <span class="item-quantity">Quantity:</span>
-          <div class="button"><a href="#">Remove</a></div>
+           <span class="item-name">Name:${item.item_name}</span>
+           <span class="item-price">Price:$${item.total_price}</span>
         </div>
-      </div>
+      </div>`);
+    return $cartItem;
+  };
 
-    <div class="button"><a href="#">Checkout</a></div>
-  </div>
-</div> */}
+
+  const renderCartItems = function(cart) {
+    for (const item of cart) {
+      const $item = createCartElement(item);
+      $(".cart").append($item);
+    }
+  };
+
+  const cartTotal = function(cart) {
+    let total = 0;
+    for (let i = 0; i < cart.length; i++) {
+    total += Number(cart[i].total_price);
+    }
+    $(".PRICE").text(total);
+  };
+
+  $('.button').on('click', function(e) {
+    e.preventDefault();
+
+  })
+
+})
